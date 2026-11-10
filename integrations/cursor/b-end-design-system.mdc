@@ -1,0 +1,11 @@
+---
+description: 将已安装的 B 端设计系统用于企业界面设计、实现和审查。
+alwaysApply: true
+---
+
+处理 B 端界面设计、实现或审查任务时，先从项目根目录读取
+@.cursor/skills/b-end-design-system/SKILL.md 。
+其中的规范、模板、组件清单和脚本均相对于
+`.cursor/skills/b-end-design-system/` 解析，而非应用源码目录。
+遵循 Skill 工作流，在选择页面骨架或组件前阅读相关规范，
+交付前完成检查清单。

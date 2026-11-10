@@ -87,8 +87,9 @@ b-end-design-system-skill/
 
 ## 如何在你的 AI 工具中使用？
 
-### 方式 1：Cursor 用户 (推荐)
-直接将本仓库的 [`.cursorrules`](.cursorrules) 复制到你的项目根目录下，或者在 `.cursor/rules/` 目录下添加指向 `SKILL.md` 的引用即可。
+### Cursor 安装
+
+请按 [Cursor 安装指南](docs/install-cursor.md)将完整资源包复制到业务项目。指南提供可选的现代 `.mdc` 规则，引用正确的安装路径，并保留已有 Skill 与规则。仅复制 `.cursorrules` 只能获得精简规则。
 
 ### 方式 2：Claude Code / Antigravity (AGY) / Codex 用户
 
