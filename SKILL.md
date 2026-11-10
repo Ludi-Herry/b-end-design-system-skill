@@ -74,6 +74,9 @@ tags: [design-system, ui-ux, b-end, components, rules, archetypes]
 ## 开箱即用实战模板 (Templates)
 
 生成真实代码时，可直接参考或复制 `templates/` 目录中的标准工程代码：
+
+这些参考组件需要已有 React + TypeScript 应用，并安装 `lucide-react`、配置 Tailwind CSS。安装 Skill 不会安装前端依赖或配置构建流程，复制组件前请阅读[模板使用前提](./templates/README.md)。
+
 - `templates/list-page-template.tsx`：标准查询表格 + 批量浮条 + 抽屉轻编辑 + 确认删除弹窗。
 - `templates/form-page-template.tsx`：Top-aligned 标签置顶 + 卡片语义分组 + 离开防丢脏检查。
 - `templates/detail-page-template.tsx`：DetailHeader + DescriptionGrid + Tabs 辅助页签 + 审计时间线。
@@ -83,7 +86,12 @@ tags: [design-system, ui-ux, b-end, components, rules, archetypes]
 
 ## 自动化校验脚本 (Lint Script)
 
-代码生成完成后，可随时执行 Python 走查脚本自检：
+使用 Python 3 运行随包提供的审计脚本。请根据当前 `SKILL.md` 所在目录定位脚本，不要相对于业务项目的工作目录查找。将下方两个绝对路径分别替换为 Skill 安装目录和待扫描源码目录：
+
 ```bash
-python scripts/audit-design-rules.py path/to/your/code
+python3 "/absolute/path/to/b-end-design-system/scripts/audit-design-rules.py" "/absolute/path/to/your/project"
 ```
+
+支持 `.tsx`、`.jsx`、`.vue`、`.html` 文件。递归扫描目录时不进入符号链接目录；请按需单独指定其实际目录。
+
+退出码：`0` 表示已检查源码且未检测到违规，`1` 表示检测到违规或文件/目录读取失败，`2` 表示目标不存在、文件类型不受支持，或目录中没有受支持的源码文件。此正则检查仅覆盖已实现的规则，通过检查不能替代完整设计走查。

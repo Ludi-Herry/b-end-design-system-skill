@@ -82,16 +82,36 @@ def main():
     target = sys.argv[1] if len(sys.argv) > 1 else "."
     target_path = Path(target).resolve()
 
+    if not target_path.exists():
+        print(f"目标不存在： {target_path}", file=sys.stderr)
+        sys.exit(2)
+
+    extensions = (".tsx", ".jsx", ".vue", ".html")
     files_to_check = []
     if target_path.is_file():
+        if target_path.suffix.lower() not in extensions:
+            print(f"不支持的源码文件类型：{target_path}", file=sys.stderr)
+            sys.exit(2)
         files_to_check.append(target_path)
     else:
-        for ext in ("*.tsx", "*.jsx", "*.vue", "*.html"):
-            files_to_check.extend(target_path.rglob(ext))
+        scan_errors = []
+        for directory, _, filenames in os.walk(target_path, onerror=scan_errors.append):
+            files_to_check.extend(
+                Path(directory) / name for name in filenames
+                if Path(name).suffix.lower() in extensions
+            )
+        if scan_errors:
+            for error in scan_errors:
+                print(f"目录扫描失败：{error}", file=sys.stderr)
+            sys.exit(1)
 
     total_violations = 0
     print(f"[Ludi Design Linter] 正在走查设计系统规则: {target_path}")
     print(f"发现目标待测代码文件: {len(files_to_check)} 个\n")
+
+    if not files_to_check:
+        print("未找到受支持的源码文件（.tsx、.jsx、.vue、.html）。", file=sys.stderr)
+        sys.exit(2)
 
     for f in files_to_check:
         results = audit_file(f)
@@ -101,11 +121,12 @@ def main():
                 total_violations += 1
                 color_tag = "[ERROR]" if r["severity"] == "ERROR" else "[WARN]"
                 print(f"  Line {r['line']} {color_tag} ({r['id']} {r['rule']}): {r['message']}")
-                print(f"    代码片段: `{r['code_snippet']}`")
+                if "code_snippet" in r:
+                    print(f"    代码片段: `{r['code_snippet']}`")
             print()
 
     if total_violations == 0:
-        print("恭喜！未检测到设计系统规范违规项，代码设计层级与交互门禁均合规！")
+        print("走查完成，未检测到已实现规则覆盖的违规项；仍需人工设计检查。")
         sys.exit(0)
     else:
         print(f"走查完成，共发现 {total_violations} 处需优化的设计或交互项。")

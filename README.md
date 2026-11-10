@@ -83,6 +83,8 @@ b-end-design-system-skill/
     └── audit-design-rules.py         # Python 自动化设计系统规则检查脚本
 ```
 
+TSX 模板需要已有 React + TypeScript 应用，并安装 `lucide-react`、配置 Tailwind CSS；它们是参考组件，不是独立应用，详见[模板使用前提](templates/README.md)。可选审计脚本需要 Python 3，无需 pip 依赖；请按 [SKILL.md](SKILL.md#自动化校验脚本-lint-script) 使用安装位置的绝对路径执行。
+
 ---
 
 ## 如何在你的 AI 工具中使用？
