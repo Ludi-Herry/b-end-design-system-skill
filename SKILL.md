@@ -48,6 +48,16 @@ tags: [design-system, ui-ux, b-end, components, rules, archetypes]
    - **模态 ≠ 阻断**：查看详情优先使用**侧边抽屉 (Drawer)** 或同页展开，保留列表背景上下文；需要独立协同分享时使用独立整页；避免无脑使用居中阻断弹窗。
    - **高危操作阻力**：删除、清空、扣费必须使用 `ConfirmDialog`，标题中立交代对象，描述交代不可逆后果，按钮采用明确动宾文案（如“彻底删除”）。
 
+4. **出海国际化与高级排版硬约束**：
+   - **短词膨胀防护**：欧系语言短词翻 2–3 倍，严禁对操作按钮写死 `w-20` 等固定像素，必须弹性自适应；出海表单首选 Top-Label 上下结构。
+   - **音标防削顶与 RTL 逻辑属性**：多语言行高 $\ge 1.5$ 且杜绝滥用 `overflow: hidden` 削掉泰语/阿语音标；阿语界面用 CSS 逻辑属性，但进度条与数字强制保持 LTR。
+   - **等宽数字与防孤字成行**：指标看板、倒计时与表格数值锁死 `tabular-nums` 防抖；关键标题启用 `text-wrap: balance`。
+
+5. **数据界面四大骨架与去 AI 味纯粹性**：
+   - **查询分层与按钮防卡死**：高频筛选平铺 3–4 个靠左，大数据量/慢查询必须提供查询按钮，严禁每改一字全局卡死转圈；时间区间胶囊 Pills 外露，双日历设置最大跨度防呆；树形标签按父级收拢防炸框。
+   - **页面默认平 (Zero Shadow on Cards)**：常规卡片默认纯平，采用 0.5px 微边框切分，阴影只留给离屏真实浮层，禁止卡片套卡片与滥用发光。
+   - **单一强调色与字号 $\le 4$ 档**：全页仅 1 个彩色行动按钮，其余中性暖灰；字号严格限定 4 档；清除无意义 eyebrow 悬顶小标签。
+
 ---
 
 ## 深度参考规范库导航 (References Index)
@@ -55,7 +65,7 @@ tags: [design-system, ui-ux, b-end, components, rules, archetypes]
 遇到具体设计决策时，精准查阅 `references/` 目录下的专门手册：
 
 - **基石与视觉法则**：[01-design-tokens-and-foundations.md](./references/01-design-tokens-and-foundations.md)
-  - 色彩语义四层分级、0.5px 微边框配方、同心圆角几何计算、阴影防 overflow 裁切公式。
+  - 色彩语义四层分级、0.5px 微边框配方、同心圆角几何计算、去 AI 味四大纯粹性铁律（页面默认平/暖灰/单一强调色）。
 - **基础原子组件**：[02-primitive-components.md](./references/02-primitive-components.md)
   - Button 五层视觉阶梯、主操作判定五步法、Badge 业务映射表、Radio/Switch/Select 否定判据。
 - **浮层与反馈系统**：[03-overlays-dialog-drawer.md](./references/03-overlays-dialog-drawer.md)
@@ -63,11 +73,11 @@ tags: [design-system, ui-ux, b-end, components, rules, archetypes]
 - **复合组件与数据结构**：[04-composite-components.md](./references/04-composite-components.md)
   - DataGrid 表格列三向对齐、FilterPanel 三态、DescriptionGrid 四层区隔、BulkActionBar、五态覆盖法。
 - **六大页面模板骨架**：[05-page-templates-and-archetypes.md](./references/05-page-templates-and-archetypes.md)
-  - 列表页 5 种形态、表单页 4 级复杂度、详情页 3 种模式、看板 KPI 约束、设置页即时保存判据。
+  - 列表页 5 种形态、数据界面查询与时间检索四大骨架、复杂图表跨端响应式断点、看板 KPI 约束。
 - **组件选型 7 大否定判据与反模式**：[06-component-priority-and-anti-patterns.md](./references/06-component-priority-and-anti-patterns.md)
   - 量级/频次/时长/重要性/语义/结构错配的退出机制、40+ 条高频避坑红线。
 - **交付前自查硬清单**：[07-design-system-audit-checklist.md](./references/07-design-system-audit-checklist.md)
-  - 15 项视觉与交互门禁走查表。
+  - 22 项视觉与交互门禁走查表。
 
 ---
 

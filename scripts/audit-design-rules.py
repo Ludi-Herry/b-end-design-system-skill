@@ -55,6 +55,27 @@ RULES = [
         "pattern": r'(?:金额|价格|签约额|收入|支出|总额)[^<]*?</th>\s*<td(?![^>]*?text-right)',
         "message": "检测到金额或财务数值列未采用 text-right 右对齐。必须右对齐以保证个十百千数位垂直对齐。",
     },
+    {
+        "id": "DS-006",
+        "name": "操作按钮写死固定宽度（出海短词膨胀隐患）",
+        "severity": "WARNING",
+        "pattern": r'<(?:button|Button)[^>]*?\b(?:w-20|w-16|w-24|w-\[80px\]|w-\[72px\])\b',
+        "message": "检测到操作按钮写死固定像素宽度。欧系多语言短词翻译后长度暴涨2-3倍（短词膨胀定律），按钮应使用弹性填充或 min-w + px 自适应。",
+    },
+    {
+        "id": "DS-007",
+        "name": "紧缩行高导致多语言变音符号削顶隐患",
+        "severity": "WARNING",
+        "pattern": r'\b(?:leading-none|leading-tight|line-height:\s*1(?:px|rem|em|;)|\bleading-\[1\])\b',
+        "message": "检测到紧缩行高。泰语、越南语、阿拉伯语等带有上下变音符号，过紧行高会被削顶削底，出海多语言建议 leading-normal 或 >= 1.5。",
+    },
+    {
+        "id": "DS-008",
+        "name": "常规内容卡片滥用大阴影（违背页面默认平原则）",
+        "severity": "WARNING",
+        "pattern": r'<(?:Card|\w+Card)[^>]*?\b(?:shadow-lg|shadow-xl|shadow-2xl)\b',
+        "message": "检测到常规卡片使用了大阴影。根据页面默认平原则，卡片应默认纯平用 0.5px/1px 微边框切分，大阴影仅留给真实浮层（Modal/Popover/Drawer）。",
+    },
 ]
 
 def audit_file(file_path: Path):
