@@ -91,6 +91,10 @@ b-end-design-system-skill/
 
 请按 [Cursor 安装指南](docs/install-cursor.md)将完整资源包复制到业务项目。指南提供可选的现代 `.mdc` 规则，引用正确的安装路径，并保留已有 Skill 与规则。仅复制 `.cursorrules` 只能获得精简规则。
 
+### Windsurf / Cascade 安装
+
+请按 [Windsurf 安装指南](docs/install-windsurf.md)安装完整资源包，保留已有规则。指南区分 Windsurf 与后续客户端的工作区路径，并说明如何发现 Skill、调用与执行已安装脚本。
+
 ### 方式 2：Claude Code / Antigravity (AGY) / Codex 用户
 
 请在[中文安装指南目录](docs/)中选择对应客户端的指南，先部署完整资源包，再将以下提示词输入客户端对话框；它不是 Shell 安装命令：
