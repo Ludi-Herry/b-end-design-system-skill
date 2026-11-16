@@ -134,6 +134,8 @@ TSX 模板需要已有 React + TypeScript 应用，并安装 `lucide-react`、�
 
 欢迎提交 Issue 和 Pull Request！如果你在实际业务项目中发现了新的 B 端反模式或更好的组件配方，非常欢迎为本项目贡献你的智慧！
 
+提交前请阅读[贡献指南](CONTRIBUTING.md)，了解本地检查、规范联动和 Issue / PR 提交流程。
+
 ## 开源协议 (License)
 
 本项目采用 [MIT License](LICENSE) 开源协议。无论是个人学习、团队规范制定还是商业化项目落地，均可自由使用与二开。
