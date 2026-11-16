@@ -7,7 +7,7 @@ tags: [design-system, ui-ux, b-end, components, rules, archetypes]
 
 # B端设计系统与组件规范 AI 执行引擎 (Ludi Design System Skill)
 
-本 Skill 是面向 AI 编程助手（Agent、Claude Code、Cursor、Windsurf、Codex 等）的可执行设计系统指令层。它彻底终结“AI 拼装页面毫无设计感、组件乱堆、弹窗抽屉滥用、色彩失控”的行业通病，将资深设计师的决策直觉转化为确定性的工程生成约束。
+本 Skill 是面向 AI 编程助手（Agent、Claude Code、Cursor、Windsurf、Codex 等）的可执行设计系统指令层。一切向 **Linear 官网与 Apple Notes 的极致简洁**看齐：简单目的、简单架构、简单设计、简单实现；每个决策必须同时提升 **UX（用户体验）、DX（开发者体验）与 AX（智能体体验）**。
 
 ---
 
@@ -24,9 +24,9 @@ tags: [design-system, ui-ux, b-end, components, rules, archetypes]
         │
 [步骤 4: 选型判据] ──► 执行 7 大否定判据，确定 Modal vs Drawer vs Page (references/03 & 06)
         │
-[步骤 5: 原子约束] ──► 坚守 Button 唯一主操作、Badge 80% 浅底深字、0.5px 微边框 (references/01 & 02)
+[步骤 5: 原子约束] ──► 坚守 Button 6 态与唯一主操作、Badge 浅底深字、4px 栅格 (references/01 & 02)
         │
-[步骤 6: 闭环走查] ──► 运行 15 项设计系统硬门禁与五态检查 (references/07)
+[步骤 6: 闭环走查] ──► 运行 25 项设计系统硬门禁与五态检查 (references/07)
 ```
 
 ---
@@ -58,6 +58,12 @@ tags: [design-system, ui-ux, b-end, components, rules, archetypes]
    - **页面默认平 (Zero Shadow on Cards)**：常规卡片默认纯平，采用 0.5px 微边框切分，阴影只留给离屏真实浮层，禁止卡片套卡片与滥用发光。
    - **单一强调色与字号 $\le 4$ 档**：全页仅 1 个彩色行动按钮，其余中性暖灰；字号严格限定 4 档；清除无意义 eyebrow 悬顶小标签。
 
+6. **极简去 AI Slop 五指令与原子 6 态（EP21/22/24）**：
+   - **空间即解释与按频次折叠 UX 文案**：删除标语、辅助文本与次要标签，让布局本身发挥解释作用；低频说明用 `Tooltip`/`Alert` 折叠收纳，不常驻显示，文案严禁营销感或轻浮口语。
+   - **全局变量 + 4px 对称网格**：圆角、色彩全部收敛为全局 CSS Token，条件允许且性能无忧时采用连续圆角；所有间距严格使用 4 的倍数，元素嵌套必要时上下左右四边内边距一致。
+   - **按钮 6 种完整状态**：Default / Hover / Active / Disabled / **Loading（转圈+锁点击防重复付款）** / **Focus-visible（Tab 聚焦外框，严禁 `outline: none`）**，并附组件 Do/Don't 范例。
+   - **AI 协作防死循环协议（AX）**：外置 `Design Token` 与页面模板组装，不靠对话口头约定；同一问题反复修改超过 5 轮未果时，立即开新窗口并只投喂最小充分切片上下文（避免注意力稀释与中途迷失）。
+
 ---
 
 ## 深度参考规范库导航 (References Index)
@@ -77,7 +83,7 @@ tags: [design-system, ui-ux, b-end, components, rules, archetypes]
 - **组件选型 7 大否定判据与反模式**：[06-component-priority-and-anti-patterns.md](./references/06-component-priority-and-anti-patterns.md)
   - 量级/频次/时长/重要性/语义/结构错配的退出机制、40+ 条高频避坑红线。
 - **交付前自查硬清单**：[07-design-system-audit-checklist.md](./references/07-design-system-audit-checklist.md)
-  - 22 项视觉与交互门禁走查表。
+  - 25 项视觉与交互门禁走查表。
 
 ---
 

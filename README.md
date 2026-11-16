@@ -57,6 +57,11 @@
 - **等宽数字强制锁死 (`tabular-nums`)**：数据看板、监控指标与表格数值列全量等宽，消灭动态跳动时的左右乱颤；
 - **文字防孤字成行 (`text-wrap: balance`)** 与 **暗色模式字重补偿**（Dark mode 下字重自动降细一档以抵消人眼光晕效应）。
 
+### 5. 去 AI Slop 极简哲学与原子完整态 (Anti-AI Slop & UX/DX/AX)
+- **Linear / Apple Notes 极简基准**：简单目的、简单架构、简单设计、简单实现；删除多余标语与辅助标签，让布局本身发挥解释作用；
+- **UX × DX × AX 三效协同**：外置 Design Token、4px 对称间距体系、连续圆角（Squircle）与业界 Do/Don't 语义范例；低频说明用 `Tooltip` / `Alert` 按需折叠；
+- **按钮 6 态硬标准**：完整覆盖 Default / Hover / Active / Disabled / **Loading（转圈+防重锁）** / **Focus-visible（Tab 聚焦环）**，配合 AI 协作防注意力稀释协议。
+
 ---
 
 ## 仓库结构 (Repository Structure)

@@ -76,6 +76,13 @@ RULES = [
         "pattern": r'<(?:Card|\w+Card)[^>]*?\b(?:shadow-lg|shadow-xl|shadow-2xl)\b',
         "message": "检测到常规卡片使用了大阴影。根据页面默认平原则，卡片应默认纯平用 0.5px/1px 微边框切分，大阴影仅留给真实浮层（Modal/Popover/Drawer）。",
     },
+    {
+        "id": "DS-009",
+        "name": "裸写 outline-none 且缺失键盘聚焦外框（违反按钮 6 态与 WCAG）",
+        "severity": "WARNING",
+        "pattern": r'<(?:button|Button|a|input|select)[^>]*?\b(?:outline-none|focus:outline-none)\b(?![^>]*?\b(?:focus-visible:ring|focus:ring)\b)',
+        "message": "检测到清除了默认 outline 但未补充 focus-visible:ring 聚焦环。键盘 Tab 导航用户将彻底丢失焦点位置，必须为交互控件补齐 Focus 态。",
+    },
 ]
 
 def audit_file(file_path: Path):
